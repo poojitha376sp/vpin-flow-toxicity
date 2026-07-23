@@ -1,6 +1,9 @@
 # Raw captured trade data (large, reproducible via src/data/collect_trades.py)
 data/raw/
 
+# Processed/bucketed datasets (large, reproducible via src/features/volume_clock.py)
+data/processed/
+
 # Python
 __pycache__/
 *.pyc

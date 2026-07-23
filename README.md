@@ -29,8 +29,10 @@ Built day by day rather than in one sitting.
 - [x] **Part 1 — Foundations** (Phase 1 Research + Phase 2 Data acquisition):
   derive bulk volume classification and the VPIN formula from first
   principles, stand up a real tick/trade data pipeline.
-- [ ] **Part 2 — Core Mechanism** (Phase 3 Volume clock + bucketing):
-  construct the volume clock and implement Bulk Volume Classification.
+- [x] **Part 2 — Core Mechanism** (Phase 3 Volume clock + bucketing):
+  construct the volume clock and implement Bulk Volume Classification. See
+  [`src/features/volume_clock.py`](src/features/volume_clock.py) — fixed-volume
+  bucket construction + BVC, run against a real ~240s BTCUSDT capture.
 - [ ] **Part 3 — Fitting & Extension** (Phase 4 VPIN estimation): compute
   the rolling VPIN estimator, sanity-check against known stress events.
 - [ ] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
