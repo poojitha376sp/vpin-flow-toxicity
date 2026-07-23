@@ -12,7 +12,7 @@ Part of a 4-project microstructure suite for QuantFest:
 [hawkes-fill-probability](https://github.com/poojitha376sp/hawkes-fill-probability) ·
 [adverse-selection-market-making](https://github.com/poojitha376sp/adverse-selection-market-making)
 
-Status: planning phase.
+Status: core project complete (Parts 1-4); stretch goals not yet started.
 
 See [`research/CHEATSHEET.md`](research/CHEATSHEET.md) for the working
 reference doc — academic papers (including the Andersen-Bondarenko
@@ -48,9 +48,21 @@ Built day by day rather than in one sitting.
   non-toxic" baseline on raw accuracy** (~0.71, driven by class
   imbalance) — reported plainly as a legitimate mixed/null result per
   the Andersen-Bondarenko-critique framing in `research/CHEATSHEET.md`.
-- [ ] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
-  predictive-power test (incl. checking the Andersen-Bondarenko critique
-  directly against this data), monitor pipeline, final write-up.
+- [x] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
+  predictive-power test checking the Andersen-Bondarenko critique directly
+  against this data, plus an economic-significance test on the real
+  trade tape. See [`src/validation/volatility_control.py`](src/validation/volatility_control.py),
+  [`src/validation/economic_significance.py`](src/validation/economic_significance.py),
+  and the full write-up in [`research/RESULTS.md`](research/RESULTS.md).
+  Headline verdict: VPIN's incremental predictive power over trailing
+  volatility survives a strict walk-forward control in only 2 of 6 tested
+  (capture, window) configurations — directly reproducing the
+  Andersen-Bondarenko failure mode on this project's own primary
+  configuration, not just citing it — yet an independent economic test
+  finds high-VPIN buckets *did* see significantly larger real forward
+  price moves in both captures tested, so the honest verdict is real but
+  fragile, implementation-sensitive signal, not a clean win for either
+  side of the dispute.
 
 Stretch goals (streaming VPIN, cross-venue comparison, feeding
 adverse-selection-market-making) are a bonus beyond these 4 parts, not

@@ -8,3 +8,6 @@ scipy>=1.11
 
 # Part 3 (classical ML toxicity classifier)
 scikit-learn>=1.4
+
+# Part 4 (validation: Andersen-Bondarenko-style volatility-control test)
+statsmodels>=0.14
