@@ -14,6 +14,12 @@ Part of a 4-project microstructure suite for QuantFest:
 
 Status: planning phase.
 
+See [`research/CHEATSHEET.md`](research/CHEATSHEET.md) for the working
+reference doc — academic papers (including the Andersen-Bondarenko
+critique dispute), practitioner writeups, relevant conferences, and what
+market-making/HFT firms publicly disclose about adverse-selection / toxic-flow
+risk management. Kept up to date as research continues.
+
 ---
 
 ## Plan of Approach
