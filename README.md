@@ -26,7 +26,7 @@ risk management. Kept up to date as research continues.
 
 Built day by day rather than in one sitting.
 
-- [ ] **Part 1 — Foundations** (Phase 1 Research + Phase 2 Data acquisition):
+- [x] **Part 1 — Foundations** (Phase 1 Research + Phase 2 Data acquisition):
   derive bulk volume classification and the VPIN formula from first
   principles, stand up a real tick/trade data pipeline.
 - [ ] **Part 2 — Core Mechanism** (Phase 3 Volume clock + bucketing):
@@ -57,7 +57,8 @@ required for core completion.
   VPIN's forecasting power) so the write-up can honestly discuss the
   metric's limitations rather than presenting it as beyond question.
 - Write a short internal note deriving bulk volume classification and the
-  VPIN formula from first principles before writing code.
+  VPIN formula from first principles before writing code — see
+  [`research/DERIVATION.md`](research/DERIVATION.md).
 
 ### Phase 2 — Data acquisition
 - Primary candidate: trade-level (tick) data with volume and price, from a

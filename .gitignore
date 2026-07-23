@@ -1,0 +1,13 @@
+# Raw captured trade data (large, reproducible via src/data/collect_trades.py)
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.vscode/

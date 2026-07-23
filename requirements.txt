@@ -1,0 +1,7 @@
+# Phase 2 (data acquisition)
+websockets>=12.0
+
+# Phase 3+ (volume clock, BVC, VPIN estimation) - added ahead of need
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
