@@ -34,7 +34,10 @@ Built day by day rather than in one sitting.
   [`src/features/volume_clock.py`](src/features/volume_clock.py) — fixed-volume
   bucket construction + BVC, run against a real ~240s BTCUSDT capture.
 - [ ] **Part 3 — Fitting & Extension** (Phase 4 VPIN estimation): compute
-  the rolling VPIN estimator, sanity-check against known stress events.
+  the rolling VPIN estimator, sanity-check against known stress events,
+  plus a **classical ML toxicity classifier** (gradient boosting) trained
+  on the Part 2 bucket features as a comparison against the analytical
+  VPIN rule. See "AI/ML plan" below and `research/CHEATSHEET.md`.
 - [ ] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
   predictive-power test (incl. checking the Andersen-Bondarenko critique
   directly against this data), monitor pipeline, final write-up.
@@ -90,6 +93,29 @@ required for core completion.
 - Track the VPIN time series against known stress events in the data
   (largest realized-volatility spikes, largest single-bucket price moves)
   as a first sanity check.
+
+### AI/ML plan
+ML is a core part of this project, not an afterthought — staged so a solid
+classical baseline exists before anything heavier (decision recorded
+2026-07-23, see `research/CHEATSHEET.md` for full citations):
+- **Now (Part 3, classical ML)**: a gradient boosting classifier trained on
+  the Part 2 bucket-level features (OI_τ, ΔP_τ, z_τ, volume, recent-bucket
+  history) to predict elevated near-term volatility/toxicity, compared
+  against simply thresholding the analytical VPIN rolling average —
+  answering "does an ML model trained on the same inputs beat the
+  hand-built formula, and does it inherit the same
+  volatility-confound problem Andersen & Bondarenko identified in VPIN
+  itself (CHEATSHEET.md §1), or avoid it?"
+- **Later (Part 4 / stretch, deep learning)**: Cartea, Duran-Martin &
+  Sánchez-Betancourt's "Detecting Toxic Flow" (CHEATSHEET.md §1) is the
+  direct modern analogue — an online Bayesian neural-network method
+  ("PULSE") classifying trade-by-trade toxicity, a genuinely different
+  paradigm from VPIN's aggregate rolling average. Also worth keeping in
+  mind: Optiver's own AI-trading-models post (CHEATSHEET.md §4) found
+  their models could *recognize* adverse selection but still traded at
+  negative EV against informed counterparties — a useful, honest
+  benchmark for what "the ML model works" should actually mean here
+  (recognizing toxicity isn't the same as acting on it correctly).
 
 ### Phase 5 — Validation (the part most student projects get wrong)
 - Test predictive power out-of-sample: does elevated VPIN precede

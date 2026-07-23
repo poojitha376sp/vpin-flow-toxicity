@@ -203,3 +203,29 @@ Caveat up front, same as the sister cheatsheet: **no firm publishes its actual p
   Yildiz & Van Ness (2020) Global Finance Journal — headline direction (VPIN correlates with liquidity deterioration) confirmed via multiple secondary summaries, exact statistics not independently re-derived; Low (2018) Journal of Risk BV-VPIN — citation and headline finding confirmed via search/indexing, but the PDF's body text could not be machine-extracted, so specific performance numbers are unverified; Abad, Massot, Nawn, Pascual & Yagüe "Order Flow Toxicity under the Microscope" — existence and general thrust confirmed, exact publication venue/year ambiguous (working-paper vs. published version not fully disentangled); Bambade & Wu IntechOpen chapter — findings summary cross-confirmed via search snippets, primary chapter text not directly read; XTX Markets' and Citadel Securities' adverse-selection practices as described — sourced from third-party/secondary commentary rather than firm-published primary sources.
 - **Flagged as unconfirmed / not found (do not cite as fact):**
   Any QuantStart-specific VPIN article (searched, none found); any free/public QuantInsti VPIN blog post (only a paid course module was found, content unverified); any Dean Markwick (dm13450.github.io) post specifically on VPIN or PIN (only his OFI post was found); any specific VPIN-related conference talk/track at Battle of the Quants, the Paris "Confronting Many Viewpoints" series, or the Chicago Stevanovich Center conference (plausible venue overlap by subject matter, but no specific instance verified); any Jump Trading, DRW, Tower Research, IMC, or Virtu Financial public technical content on flow toxicity or informed-trading detection beyond generic careers/company descriptions; the exact verbatim BVC and VPIN equations as printed in the original RFS (2012) paper — reconstructed here from multiple consistent secondary sources (QuestDB, MicroAlphas, and academic summaries) rather than extracted directly from the primary PDF, which repeatedly failed automated text extraction in this research pass — readers implementing VPIN for the competition should verify the exact equations against the primary source (https://www.quantresearch.org/VPIN.pdf) or a clean-text mirror before finalizing code.
+
+
+---
+
+## AI/ML plan for this project (decision record, 2026-07-23)
+
+ML is treated as a required part of this project, not a stretch add-on —
+staged so a validated classical baseline exists before anything heavier.
+
+- **Part 3 (now): classical ML.** A gradient boosting classifier trained on
+  Part 2's bucket-level features (OI_τ, ΔP_τ, z_τ, volume, recent-bucket
+  history) to predict elevated near-term volatility/toxicity, compared
+  directly against thresholding the analytical VPIN rolling average.
+  Central question: does the ML model beat the hand-built formula, and
+  does it inherit VPIN's own volatility-confound problem (Andersen &
+  Bondarenko, §1) or avoid it by conditioning on volatility explicitly?
+- **Part 4 / stretch: deep learning.** Cartea, Duran-Martin &
+  Sánchez-Betancourt's "Detecting Toxic Flow" (§1) — an online Bayesian
+  neural network ("PULSE") classifying trade-by-trade toxicity — is the
+  direct modern analogue and the natural next step past a batch-trained
+  gradient booster. Worth pairing with Optiver's own AI-trading-models post
+  (§4): their models could *recognize* adverse selection but still traded
+  at negative EV against informed counterparties — a genuinely useful,
+  honest bar for what "the ML model works" should mean here (recognizing
+  toxicity isn't the same as acting on it correctly, and this project's
+  own validation phase should check for that gap explicitly).
