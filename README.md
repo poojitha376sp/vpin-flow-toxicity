@@ -1,16 +1,11 @@
 # VPIN — Flow Toxicity / Informed-Trading Detector
 
-QuantFest (IICPC) project. Implements Volume-Synchronized Probability of
+Implements Volume-Synchronized Probability of
 Informed Trading (VPIN) — a real-time measure of "order flow toxicity" that
 flags when informed traders are likely picking off market makers before it
 shows up in price. VPIN is famous for being implicated in explaining the
 liquidity conditions preceding the 2010 Flash Crash, and market-maker risk
 desks watch some version of it in production.
-
-Part of a 4-project microstructure suite for QuantFest:
-[order-flow-imbalance](https://github.com/poojitha376sp/order-flow-imbalance) ·
-[hawkes-fill-probability](https://github.com/poojitha376sp/hawkes-fill-probability) ·
-[adverse-selection-market-making](https://github.com/poojitha376sp/adverse-selection-market-making)
 
 Status: core project complete (Parts 1-4); stretch goals not yet started.
 
@@ -64,9 +59,8 @@ Built day by day rather than in one sitting.
   fragile, implementation-sensitive signal, not a clean win for either
   side of the dispute.
 
-Stretch goals (streaming VPIN, cross-venue comparison, feeding
-adverse-selection-market-making) are a bonus beyond these 4 parts, not
-required for core completion.
+Stretch goals (streaming VPIN, cross-venue comparison) are a bonus beyond
+these 4 parts, not required for core completion.
 
 ---
 
@@ -160,9 +154,6 @@ classical baseline exists before anything heavier (decision recorded
 ### Stretch goals
 - Real-time streaming VPIN computation (not just offline backtest).
 - Cross-venue VPIN comparison (does toxicity in one venue lead another?).
-- Feed VPIN as an informed-flow proxy into
-  [adverse-selection-market-making](https://github.com/poojitha376sp/adverse-selection-market-making)'s
-  spread-widening logic.
 
 ---
 
