@@ -22,6 +22,27 @@ risk management. Kept up to date as research continues.
 
 ---
 
+## Execution Roadmap (4 parts)
+
+Built day by day rather than in one sitting.
+
+- [ ] **Part 1 — Foundations** (Phase 1 Research + Phase 2 Data acquisition):
+  derive bulk volume classification and the VPIN formula from first
+  principles, stand up a real tick/trade data pipeline.
+- [ ] **Part 2 — Core Mechanism** (Phase 3 Volume clock + bucketing):
+  construct the volume clock and implement Bulk Volume Classification.
+- [ ] **Part 3 — Fitting & Extension** (Phase 4 VPIN estimation): compute
+  the rolling VPIN estimator, sanity-check against known stress events.
+- [ ] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
+  predictive-power test (incl. checking the Andersen-Bondarenko critique
+  directly against this data), monitor pipeline, final write-up.
+
+Stretch goals (streaming VPIN, cross-venue comparison, feeding
+adverse-selection-market-making) are a bonus beyond these 4 parts, not
+required for core completion.
+
+---
+
 ## Plan of Approach
 
 ### Phase 1 — Research
