@@ -33,11 +33,21 @@ Built day by day rather than in one sitting.
   construct the volume clock and implement Bulk Volume Classification. See
   [`src/features/volume_clock.py`](src/features/volume_clock.py) — fixed-volume
   bucket construction + BVC, run against a real ~240s BTCUSDT capture.
-- [ ] **Part 3 — Fitting & Extension** (Phase 4 VPIN estimation): compute
-  the rolling VPIN estimator, sanity-check against known stress events,
-  plus a **classical ML toxicity classifier** (gradient boosting) trained
-  on the Part 2 bucket features as a comparison against the analytical
-  VPIN rule. See "AI/ML plan" below and `research/CHEATSHEET.md`.
+- [x] **Part 3 — Fitting & Extension** (Phase 4 VPIN estimation): rolling
+  VPIN estimator + gradient boosting toxicity classifier, run on a fresh
+  ~606s / 9,972-trade BTCUSDT capture (250 volume buckets). See
+  [`src/model/vpin_estimator.py`](src/model/vpin_estimator.py) and
+  [`src/model/ml_toxicity_classifier.py`](src/model/ml_toxicity_classifier.py).
+  Headline numbers: VPIN_n50 mean 0.234 (std 0.088, n=201 valid obs);
+  3 of the 5 largest realized price moves land above the 85th VPIN
+  percentile (2 don't — a first-pass, non-rigorous eyeball check only).
+  On a chronological 70/30 split, the gradient boosting classifier beats
+  a VPIN-threshold baseline on AUC (0.56–0.72 vs. 0.27–0.52 across two
+  bucket-count settings — the VPIN threshold is often worse than random
+  out-of-sample), but **neither model beats a naive "always predict
+  non-toxic" baseline on raw accuracy** (~0.71, driven by class
+  imbalance) — reported plainly as a legitimate mixed/null result per
+  the Andersen-Bondarenko-critique framing in `research/CHEATSHEET.md`.
 - [ ] **Part 4 — Validation & Deliverables** (Phase 5 + 6): out-of-sample
   predictive-power test (incl. checking the Andersen-Bondarenko critique
   directly against this data), monitor pipeline, final write-up.
